@@ -1,18 +1,17 @@
-﻿using UnityEngine;
+﻿#if UNITY_EDITOR
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 using System.Collections.Generic;
 
-
-public class BatchBuild {
-	
+public class BatchBuild : EditorWindow{
 	// ビルド対象のシーン
-	//private static string[] scene = {"Assets/_Scenes/PiggCube.unity"};
+	//private static string[] scene = new string[]{"Assets/Scenes/test.unity"};
 
-	private static string android_package_name = "Wow00.0.0.0.apk";
+	private static string android_package_name = "Wow00.apk";
 	
 	// keystore Path
-	private static string keystorePath = "batch_build/Android/release.keystore";
+	private static string keystorePath = "Android/release.keystore";
 	
 	// keystoreのパスワードはUnityEditorで設定できるが保持されないのでここに記述
 	private static string keystorePass = "arith2133";
@@ -41,6 +40,7 @@ public class BatchBuild {
 	}
 	
 	// 開発用ビルド
+	[MenuItem("DevelopmentBuild/start!!!", false, 0)]
 	public static void DevelopmentBuild(){
 		
 		Debug.Log("DevelopmentBuild");
@@ -91,9 +91,9 @@ public class BatchBuild {
 		BuildOptions opt = BuildOptions.None;
 		
 		// 開発用ビルドの場合のオプション設定
-		if ( release==false ){
+		/*if ( release==false ){
 			opt |= BuildOptions.Development | BuildOptions.ConnectWithProfiler | BuildOptions.AllowDebugging;
-		}
+		}*/
 		
 		// keystoreファイルのの場所を設定
 		string keystoreName =
@@ -110,8 +110,7 @@ public class BatchBuild {
 
 		// ビルド
 		// シーン、出力ファイル（フォルダ）、ターゲット、オプションを指定
-		string errorMsg = 
-			BuildPipeline.BuildPlayer(GetScenes(), android_package_name, BuildTarget.Android, opt);
+		string errorMsg = BuildPipeline.BuildPlayer(GetScenes(), @"C:\Jenkins\workspace\TestBatchBuild\aaaaa.apk", BuildTarget.Android, BuildOptions.None);
 		
 		// errorMsgがない場合は成功
 		if ( string.IsNullOrEmpty(errorMsg) ){
@@ -126,3 +125,4 @@ public class BatchBuild {
 		
 	}
 }
+#endif
