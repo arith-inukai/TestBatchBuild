@@ -91,9 +91,9 @@ public class BatchBuild : EditorWindow{
 		BuildOptions opt = BuildOptions.None;
 		
 		// 開発用ビルドの場合のオプション設定
-		/*if ( release==false ){
+		if ( release==false ){
 			opt |= BuildOptions.Development | BuildOptions.ConnectWithProfiler | BuildOptions.AllowDebugging;
-		}*/
+		}
 		
 		// keystoreファイルのの場所を設定
 		string keystoreName =
@@ -110,7 +110,7 @@ public class BatchBuild : EditorWindow{
 
 		// ビルド
 		// シーン、出力ファイル（フォルダ）、ターゲット、オプションを指定
-		string errorMsg = BuildPipeline.BuildPlayer(GetScenes(), @"C:\Jenkins\workspace\TestBatchBuild\aaaaa.apk", BuildTarget.Android, BuildOptions.None);
+		string errorMsg = BuildPipeline.BuildPlayer(GetScenes(), android_package_name, BuildTarget.Android, opt);
 		
 		// errorMsgがない場合は成功
 		if ( string.IsNullOrEmpty(errorMsg) ){
