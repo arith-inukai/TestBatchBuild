@@ -22,6 +22,16 @@ public class BatchBuild : EditorWindow{
 
 	private static string log_string				= "********** ";
 
+	[MenuItem("DebugMode/set Home scene", false, 0)]
+	private static void setHomeDebugMode() { DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.HOME, true); }
+
+	[MenuItem("DebugMode/unset Home scene", false, 0)]
+	private static void unSetHomeDebugMode() { DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.HOME, false); }
+
+	[MenuItem("DebugMode/set Adventure scene", false, 0)]
+	private static void setAdvDebugMode() { DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.ADVENTURE, true); }
+	[MenuItem("DebugMode/unset Adventure scene", false, 0)]
+	private static void unSetAdvDebugMode() { DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.ADVENTURE, false); }
 
 	private static void loadBuildInfo() {
 
@@ -52,6 +62,12 @@ public class BatchBuild : EditorWindow{
 					break;
 				case "and_keystore_alias_pass":
 					and_keystore_alias_pass = pTmps [1];
+					break;
+				case "debug_home":
+					DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.HOME, true);
+					break;
+				case "debug_adventure":
+					DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.ADVENTURE, true);
 					break;
 				}
 			}
