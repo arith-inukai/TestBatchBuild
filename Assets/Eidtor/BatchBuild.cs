@@ -17,6 +17,8 @@ public class BatchBuild : EditorWindow{
 	private static string keystorePass = "arith2133";
 	private static string keyaliasPass = "arith2133";
 
+	private static string log_string	= "********** ";
+
 
 	// ビルド対象のシーンの取得
 	private static string[] GetScenes() {
@@ -43,7 +45,12 @@ public class BatchBuild : EditorWindow{
 	[MenuItem("DevelopmentBuild/start!!!", false, 0)]
 	public static void DevelopmentBuild(){
 		
-		Debug.Log("DevelopmentBuild");
+		Debug.Log(log_string + "DevelopmentBuild");
+
+		var commands = System.Environment.GetCommandLineArgs ();
+		for (int i = 0; i < commands.Length; i++) {
+			Debug.Log (log_string + string.Format("command i = {0}, value = {1}", i, commands [i]));
+		}
 		
 		//if ( BuildiOS(false)==false ) EditorApplication.Exit(1);
 		
@@ -55,7 +62,7 @@ public class BatchBuild : EditorWindow{
 	// iOSビルド
 	private static bool BuildiOS(bool release){
 		
-		Debug.Log("Start Build( iOS )");
+		Debug.Log(log_string + "Start Build( iOS )");
 
 		BuildOptions opt = BuildOptions.SymlinkLibraries;
 		
@@ -72,12 +79,12 @@ public class BatchBuild : EditorWindow{
 		
 		// errorMsgがない場合は成功
 		if ( string.IsNullOrEmpty(errorMsg) ){
-			Debug.Log("Build( iOS ) Success.");
+			Debug.Log(log_string + "Build( iOS ) Success.");
 			return true;
 			
 		}
 		
-		Debug.Log("Build( iOS ) ERROR!");
+		Debug.Log(log_string + "Build( iOS ) ERROR!");
 		Debug.LogError(errorMsg);
 		
 		return false;
@@ -86,7 +93,7 @@ public class BatchBuild : EditorWindow{
 	// Androidビルド
 	private static bool BuildAndroid(bool release){
 		
-		Debug.Log("Start Build( Android )");
+		Debug.Log(log_string + "Start Build( Android )");
 		
 		BuildOptions opt = BuildOptions.None;
 		
@@ -114,11 +121,11 @@ public class BatchBuild : EditorWindow{
 		
 		// errorMsgがない場合は成功
 		if ( string.IsNullOrEmpty(errorMsg) ){
-			Debug.Log("Build( Android ) Success.");
+			Debug.Log(log_string + "Build( Android ) Success.");
 			return true;
 		}
 		
-		Debug.Log("Build( Android ) ERROR!");
+		Debug.Log(log_string + "Build( Android ) ERROR!");
 		Debug.LogError(errorMsg);
 		
 		return false;
