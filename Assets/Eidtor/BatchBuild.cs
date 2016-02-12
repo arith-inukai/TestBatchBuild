@@ -10,8 +10,11 @@ public class BatchBuild : EditorWindow{
 
 	private static string temp_file_name			= "Wow00.apk";
 
+	private static string company_name				= "Arithmetic";
+	private static string product_name				= "Wow00";
+	private static string bundle_indentifier		= "com.arith.wow00";
 	private static string bundle_version			= "0.0.0";
-	private static string bundle_code				= "0";
+	private static string bundle_version_code		= "0";
 		
 	// keystore Path
 	private static string and_keystore_file_path	= "Android/release.keystore";
@@ -48,11 +51,20 @@ public class BatchBuild : EditorWindow{
 				case "temp_file_name":
 					temp_file_name = pTmps [1];
 					break;
+				case "company_name":
+					company_name = pTmps [1];
+					break;
+				case "product_name":
+					product_name = pTmps [1];
+					break;
+				case "bundle_indentifier":
+					bundle_indentifier = pTmps [1];
+					break;
 				case "bundle_version":
 					bundle_version = pTmps [1];
 					break;
-				case "bundle_code":
-					bundle_code = pTmps [1];
+				case "bundle_version_code":
+					bundle_version_code = pTmps [1];
 					break;
 				case "and_keystore_file_path":
 					and_keystore_file_path = pTmps [1];
@@ -64,10 +76,10 @@ public class BatchBuild : EditorWindow{
 					and_keystore_alias_pass = pTmps [1];
 					break;
 				case "debug_home":
-					DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.HOME, true);
+					DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.HOME, pTmps [1] == "true");
 					break;
 				case "debug_adventure":
-					DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.ADVENTURE, true);
+					DebugFlagManager.SetDebugFlag (DebugFlagManager.FlagType.ADVENTURE, pTmps [1] == "true");
 					break;
 				}
 			}
@@ -155,6 +167,15 @@ public class BatchBuild : EditorWindow{
 		if ( release==false ){
 			opt |= BuildOptions.Development | BuildOptions.ConnectWithProfiler | BuildOptions.AllowDebugging;
 		}
+
+		PlayerSettings.companyName = company_name;
+		PlayerSettings.productName = product_name;
+
+		PlayerSettings.bundleIdentifier = bundle_indentifier;
+		PlayerSettings.bundleVersion = bundle_version;
+
+		PlayerSettings.Android.bundleVersionCode = int.Parse (bundle_version_code);
+
 		
 		// keystoreファイルのの場所を設定
 		string keystoreName =
