@@ -23,9 +23,9 @@ public class BatchBuild : EditorWindow{
 	private static string log_string				= "********** ";
 
 
-	public static void SetBuildInfo() {
+	private static void loadBuildInfo() {
 
-		Debug.Log(log_string + "SetBuildInfo");
+		Debug.Log(log_string + "loadBuildInfo");
 
 		var commands = System.Environment.GetCommandLineArgs ();
 		string pTmp = "";
@@ -87,6 +87,8 @@ public class BatchBuild : EditorWindow{
 	public static void DevelopmentBuild(){
 		
 		Debug.Log(log_string + "DevelopmentBuild");
+
+		loadBuildInfo ();
 		
 		//if ( BuildiOS(false)==false ) EditorApplication.Exit(1);
 		
