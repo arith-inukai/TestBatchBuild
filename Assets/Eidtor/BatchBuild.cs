@@ -12,7 +12,7 @@ public class BatchBuild : EditorWindow{
 
 	private static string company_name				= "Arithmetic";
 	private static string product_name				= "Wow00";
-	private static string bundle_indentifier		= "com.arith.wow00";
+	private static string bundle_identifier			= "com.arith.wow00";
 	private static string bundle_version			= "0.0.0";
 	private static string bundle_version_code		= "0";
 		
@@ -57,8 +57,8 @@ public class BatchBuild : EditorWindow{
 				case "product_name":
 					product_name = pTmps [1];
 					break;
-				case "bundle_indentifier":
-					bundle_indentifier = pTmps [1];
+				case "bundle_identifier":
+					bundle_identifier = pTmps [1];
 					break;
 				case "bundle_version":
 					bundle_version = pTmps [1];
@@ -171,7 +171,7 @@ public class BatchBuild : EditorWindow{
 		PlayerSettings.companyName = company_name;
 		PlayerSettings.productName = product_name;
 
-		PlayerSettings.bundleIdentifier = bundle_indentifier;
+		PlayerSettings.bundleIdentifier = bundle_identifier;
 		PlayerSettings.bundleVersion = bundle_version;
 
 		PlayerSettings.Android.bundleVersionCode = int.Parse (bundle_version_code);
