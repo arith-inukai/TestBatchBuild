@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>APP_ID</key>
+	<string>{APP_ID}</string>
+	<key>APP_OPTIONS</key>
+	<string>{APP_OPTIONS}</string>
+	<key>APP_SALT</key>
+	<string>{APP_SALT}</string>
+	<key>APP_VERSION</key>
+	<string>{APP_VERSION}</string>
+	<key>CONVERSION_MODE</key>
+	<string>{CONVERSION_MODE}</string>
+	<key>SERVER_URL</key>
+	<string>{SERVER_URL}</string>
+	<key>ANALYTICS_APP_KEY</key>
+	<string>{ANALYTICS_APP_KEY}</string>
+	<key>ANALYTICS_QUEUE_INTERVAL</key>
+	<string>{ANALYTICS_QUEUE_INTERVAL}</string>
+	<key>DEBUG</key>
+	<string>1</string>
+</dict>
+</plist>
