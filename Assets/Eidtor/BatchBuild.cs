@@ -118,9 +118,9 @@ public class BatchBuild : EditorWindow{
 
 		loadBuildInfo ();
 		
-		//if ( BuildiOS(false)==false ) EditorApplication.Exit(1);
+		if ( BuildiOS(false)==false ) EditorApplication.Exit(1);
 		
-		if ( BuildAndroid(false)==false ) EditorApplication.Exit(1);
+		//if ( BuildAndroid(false)==false ) EditorApplication.Exit(1);
 		
 		EditorApplication.Exit(0);
 	}
